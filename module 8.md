@@ -1,4 +1,7 @@
 EXP NO:6 C PROGRAM PRINT THE LOWERCASE ENGLISH WORD CORRESPONDING TO THE NUMBER
+
+
+
 Aim:
 To write a C program print the lowercase English word corresponding to the number
 Algorithm:
@@ -16,7 +19,52 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    // Step 1: Get the number from user
+    printf("Enter a number (1 to 9): ");
+    scanf("%d", &num);
+
+    // Step 2: Print the corresponding English word
+    switch (num) {
+        case 1:
+            printf("one\n");
+            break;
+        case 2:
+            printf("two\n");
+            break;
+        case 3:
+            printf("three\n");
+            break;
+        case 4:
+            printf("four\n");
+            break;
+        case 5:
+            printf("five\n");
+            break;
+        case 6:
+            printf("six\n");
+            break;
+        case 7:
+            printf("seven\n");
+            break;
+        case 8:
+            printf("eight\n");
+            break;
+        case 9:
+            printf("nine\n");
+            break;
+        default:
+            printf("Number out of range\n");
+    }
+
+    return 0;
+}
+```
 
 
 
@@ -24,7 +72,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/8baab1fd-3b22-47e1-8c9d-a01cf37f0985)
+
 
 
 
@@ -35,6 +84,8 @@ Result:
 Thus, the program is verified successfully
  
 EXP NO:7 C PROGRAM TO PRINT TEN SPACE-SEPARATED INTEGERS     IN A SINGLE  LINE DENOTING THE FREQUENCY OF EACH DIGIT FROM 0 TO 3 .
+
+
 Aim:
 To write a C program to print ten space-separated integers in a single line denoting the frequency of each digit from 0 to 3.
 Algorithm:
@@ -47,7 +98,40 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int nums[10], frequency[4] = {0};  // Array to store numbers and frequency of digits 0 to 3
+
+    // Step 1: Input 10 integers
+    printf("Enter 10 integers: ");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &nums[i]);
+    }
+
+    // Step 2: Calculate the frequency of digits 0 to 3
+    for (int i = 0; i < 10; i++) {
+        int num = nums[i];
+        while (num > 0) {
+            int digit = num % 10;
+            if (digit >= 0 && digit <= 3) {
+                frequency[digit]++;
+            }
+            num /= 10;
+        }
+    }
+
+    // Step 3: Print the frequency of digits 0 to 3
+    printf("Frequency of digits 0 to 3: ");
+    for (int i = 0; i < 4; i++) {
+        printf("%d ", frequency[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
 
 
 
@@ -55,7 +139,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/a93c6354-a76c-4417-876f-20267efe4e44)
+
 
 
 
@@ -66,6 +151,8 @@ Result:
 Thus, the program is verified successfully
 
 EXP NO:8 C PROGRAM TO PRINT ALL OF ITS PERMUTATIONS IN STRICT LEXICOGRAPHICAL ORDER.
+
+
 Aim:
 To write a C program to print all of its permutations in strict lexicographical order.
 
@@ -84,7 +171,55 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+// Function to compare two characters for qsort (needed for lexicographical sorting)
+int compare(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
+}
+
+// Function to print all permutations of a string
+void printPermutations(char *str, int l, int r) {
+    if (l == r) {
+        printf("%s\n", str);
+    } else {
+        for (int i = l; i <= r; i++) {
+            // Swap characters at positions l and i
+            char temp = str[l];
+            str[l] = str[i];
+            str[i] = temp;
+
+            // Recurse for the next part of the string
+            printPermutations(str, l + 1, r);
+
+            // Backtrack (restore the original configuration)
+            temp = str[l];
+            str[l] = str[i];
+            str[i] = temp;
+        }
+    }
+}
+
+int main() {
+    char str[100];
+
+    // Step 1: Input the string from the user
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // Step 2: Sort the string lexicographically
+    qsort(str, strlen(str), sizeof(char), compare);
+
+    // Step 3: Print all permutations in lexicographical order
+    printf("All permutations in lexicographical order are:\n");
+    printPermutations(str, 0, strlen(str) - 1);
+
+    return 0;
+}
+```
 
 
 
@@ -92,7 +227,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/bb673f2a-5e40-4f05-af0a-6471e764807d)
+
 
 
 
@@ -104,6 +240,8 @@ Thus, the program is verified successfully
  
 EXP NO:9 C PROGRAM PRINT A PATTERN OF NUMBERS FROM 1 TO N AS
 SHOWN BELOW.
+
+
 Aim:
 To write a C program to print a pattern of numbers from 1 to n as shown below.
 Algorithm:
@@ -117,7 +255,25 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
 
 
 
@@ -125,7 +281,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/4967dc31-1ea2-416f-9eff-4e6b5394f3ef)
+
 
 
 
@@ -136,6 +293,8 @@ Result:
 Thus, the program is verified successfully
 
 EXP NO:10 C PROGRAM TO FIND A SQUARE  OF NUMBER USING FUNCTION WITHOUT ARGUMENTS WITH RETURN TYPE
+
+
 
 Aim:
 
@@ -156,7 +315,27 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+// Function that does not take any arguments but returns the square
+int findSquare() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
+
+int main() {
+    int square;
+
+    square = findSquare(); // Call the function and store the result
+
+    printf("Square of the number is: %d\n", square);
+
+    return 0;
+}
+```
 
 
 
@@ -164,7 +343,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/4982e1c3-68bd-4d47-b0fc-88dd19b53aa0)
+
 
 
 
